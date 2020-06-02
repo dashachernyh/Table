@@ -1,0 +1,6 @@
+Printing of table:
+Key: 0    Val: *0*
+Key: 7    Val: *7*
+Key: 22    Val: *22*
+Key: 23    Val: *23*
+Key: 32    Val: *32*
