@@ -25,6 +25,7 @@ namespace CppWinForm1 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 		TTable *pTable = NULL;
+		TTreeTable  *tr;
 	public:
 		MyForm(void)
 		{
@@ -384,7 +385,7 @@ namespace CppWinForm1 {
 		}
 		if (radioButton4->Checked)
 		{
-			pTable = new TTreeTable;
+			pTable =tr= new TTreeTable;
 		}
 		for (int i = 0; i < DataCount; i++)
 		{
@@ -486,6 +487,11 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 
 	ofstream tF;
 	tF.open("table.txt");
+	if (radioButton4->Checked)
+	{
+		tr->FPrintTable("table.txt");
+	}
+	else
 	pTable->Fprint(tF);
 
 }

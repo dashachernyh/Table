@@ -1,4 +1,5 @@
 #pragma once
+#include<fstream>
 #include"TTreeNode.h"
 #include"TTable.h"
 #include<stack>
@@ -15,6 +16,7 @@ protected:
 	void PrintTable(std::ostream &os);
 	void PrintTreeTable(std::ostream &os,TTreeNode *pNode);
 	void DeleteTreeTab(TTreeNode *pNode); 
+	
 	
 public:
 	TTreeTable() :TTable() { pRoot = pCurr = NULL; CurrPos = 0; }
@@ -52,4 +54,5 @@ public:
 		tab.PrintTable(os);
 		return os;
 	}
+	void FPrintTable(string str);
 };

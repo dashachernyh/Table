@@ -169,7 +169,7 @@ int TSortTable::DelRecord(TKey k)
 		}
 		else
 		{
-			for (int i =pCurr; i < DataCount-2; i++)
+			for (int i =pCurr; i < DataCount-1; i++)
 			{
 				MasRec[i] = MasRec[i + 1];
 				Efficiency++;

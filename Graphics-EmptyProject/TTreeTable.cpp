@@ -228,3 +228,12 @@ void TTreeTable::PrintTreeTable(std::ostream &os, TTreeNode *pNode)
 	}
 }
 
+//
+void TTreeTable::FPrintTable(string str)
+{
+	ofstream os(str);
+	os << "Printing of table" << std::endl;
+	level = 0;
+	PrintTreeTable(os, pRoot);
+}
+
