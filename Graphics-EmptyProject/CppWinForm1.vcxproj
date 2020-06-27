@@ -137,6 +137,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BalTree.cpp" />
+    <ClCompile Include="ListHashcpp.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="TArrayHashTable.cpp" />
     <ClCompile Include="TArrayTable.cpp" />
@@ -146,6 +148,9 @@
     <ClCompile Include="TTreeTable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BalTree.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="ListHash.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

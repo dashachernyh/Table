@@ -8,6 +8,8 @@
 #include"TScanTable.h"
 #include"TSortTable.h"
 #include"TTreeTable.h"
+#include"ListHash.h"
+#include"BalTree.h"
 //#include"TTreeNode.h"
 
 namespace CppWinForm1 {
@@ -25,7 +27,9 @@ namespace CppWinForm1 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 		TTable *pTable = NULL;
-		TTreeTable  *tr;
+	private: System::Windows::Forms::RadioButton^  radioButton5;
+	private: System::Windows::Forms::RadioButton^  radioButton6;
+			 TTreeTable  *tr;
 	public:
 		MyForm(void)
 		{
@@ -113,6 +117,8 @@ namespace CppWinForm1 {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton6 = (gcnew System::Windows::Forms::RadioButton());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -132,6 +138,7 @@ namespace CppWinForm1 {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(72, 22);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// label1
 			// 
@@ -183,7 +190,7 @@ namespace CppWinForm1 {
 			// radioButton3
 			// 
 			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(297, 132);
+			this->radioButton3->Location = System::Drawing::Point(297, 129);
 			this->radioButton3->Name = L"radioButton3";
 			this->radioButton3->Size = System::Drawing::Size(172, 21);
 			this->radioButton3->TabIndex = 7;
@@ -194,7 +201,7 @@ namespace CppWinForm1 {
 			// radioButton4
 			// 
 			this->radioButton4->AutoSize = true;
-			this->radioButton4->Location = System::Drawing::Point(297, 159);
+			this->radioButton4->Location = System::Drawing::Point(297, 184);
 			this->radioButton4->Name = L"radioButton4";
 			this->radioButton4->Size = System::Drawing::Size(79, 21);
 			this->radioButton4->TabIndex = 8;
@@ -320,11 +327,35 @@ namespace CppWinForm1 {
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
+			// radioButton5
+			// 
+			this->radioButton5->AutoSize = true;
+			this->radioButton5->Location = System::Drawing::Point(297, 157);
+			this->radioButton5->Name = L"radioButton5";
+			this->radioButton5->Size = System::Drawing::Size(171, 21);
+			this->radioButton5->TabIndex = 26;
+			this->radioButton5->TabStop = true;
+			this->radioButton5->Text = L"Хэш-таблица(список)";
+			this->radioButton5->UseVisualStyleBackColor = true;
+			// 
+			// radioButton6
+			// 
+			this->radioButton6->AutoSize = true;
+			this->radioButton6->Location = System::Drawing::Point(297, 209);
+			this->radioButton6->Name = L"radioButton6";
+			this->radioButton6->Size = System::Drawing::Size(214, 21);
+			this->radioButton6->TabIndex = 27;
+			this->radioButton6->TabStop = true;
+			this->radioButton6->Text = L"Дерево(сбалансированное)";
+			this->radioButton6->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(911, 489);
+			this->Controls->Add(this->radioButton6);
+			this->Controls->Add(this->radioButton5);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button5);
@@ -386,6 +417,14 @@ namespace CppWinForm1 {
 		if (radioButton4->Checked)
 		{
 			pTable =tr= new TTreeTable;
+		}
+		if (radioButton5->Checked)
+		{
+			pTable = new TListHashTable;
+		}
+		if (radioButton6->Checked)
+		{
+			pTable = tr = new TBalanceTree;
 		}
 		for (int i = 0; i < DataCount; i++)
 		{
@@ -487,13 +526,15 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 
 	ofstream tF;
 	tF.open("table.txt");
-	if (radioButton4->Checked)
+	if ((radioButton4->Checked)||(radioButton6->Checked))
 	{
 		tr->FPrintTable("table.txt");
 	}
 	else
 	pTable->Fprint(tF);
 
+}
+private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

@@ -36,6 +36,12 @@
     <ClCompile Include="TTreeTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListHashcpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -66,6 +72,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="THashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListHash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

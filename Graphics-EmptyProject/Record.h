@@ -16,6 +16,11 @@ public:
 	TKey GetKey(void) { return Key; }
 	void SetVal(TValue v) { Val = v; }
 	TValue GetVal() { return Val; }
+	virtual void operator =(TRecord tr)
+	{ 
+		Key = tr.Key;
+	    Val = tr.Val;
+	}
 	virtual int operator == (const TRecord & tr) { return (Key == tr.Key); }
 	virtual int operator != (const TRecord & tr) { return (Key != tr.Key); }
 	virtual int operator > (const TRecord & tr) { return (Key > tr.Key); }
@@ -32,4 +37,5 @@ public:
 	friend class TArrayHashTable;
 	friend class TTreeNode;
 	friend class TTreeTable;
+	friend class TListHashTable;
 };
